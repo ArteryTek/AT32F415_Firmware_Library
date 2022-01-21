@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_gpio.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    at32f415 gpio header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -423,7 +423,7 @@ typedef struct
   };
 
   /**
-    * @brief gpio wcr register, offset:0x10
+    * @brief gpio scr register, offset:0x10
     */
   union
   {

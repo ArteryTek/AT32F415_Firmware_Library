@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -43,7 +43,7 @@
 
 /* usb global struct define */
 otg_core_type otg_core_struct;
-uint8_t keyboard_send_flag;
+__IO uint8_t keyboard_send_flag;
 uint8_t usb_buffer[256];
 
 void usb_clock48m_select(usb_clk48_s clk_s);
@@ -111,7 +111,7 @@ void EXINT0_IRQHandler(void)
   */
 void keyboard_send_string(uint8_t *string, uint8_t len)
 {
-  uint8_t index = 0;
+  __IO uint8_t index = 0;
   for(index = 0; index < len; index ++)
   {
     while(1)
@@ -123,17 +123,18 @@ void keyboard_send_string(uint8_t *string, uint8_t len)
         break;
       }
     }
-  }
-  /* send 0x00 */
-  while(1)
-  {
-    if(g_keyboard_tx_completed == 1)
+    /* send 0x00 */
+    while(1)
     {
-      g_keyboard_tx_completed = 0;
-      usb_hid_keyboard_send_char(&otg_core_struct.dev, 0x00);
-      break;
+      if(g_keyboard_tx_completed == 1)
+      {
+        g_keyboard_tx_completed = 0;
+        usb_hid_keyboard_send_char(&otg_core_struct.dev, 0x00);
+        break;
+      }
     }
   }
+  
 }
 
 
@@ -147,6 +148,8 @@ int main(void)
   uint16_t data_len;
 
   uint32_t timeout;
+  
+  uint8_t send_zero_packet = 0;
 
   nvic_priority_group_config(NVIC_PRIORITY_GROUP_4);
 
@@ -184,8 +187,18 @@ int main(void)
     /* get usb vcp receive data */
     data_len = usb_vcp_get_rxdata(&otg_core_struct.dev, usb_buffer);
 
-    if(data_len > 0)
+    if(data_len > 0 || send_zero_packet == 1)
     {
+      /* bulk transfer is complete when the endpoint does one of the following
+         1 has transferred exactly the amount of data expected
+         2 transfers a packet with a payload size less than wMaxPacketSize or transfers a zero-length packet
+      */
+      if(data_len > 0)
+        send_zero_packet = 1;
+
+      if(data_len == 0)
+        send_zero_packet = 0;
+      
       timeout = 50000;
       do
       {

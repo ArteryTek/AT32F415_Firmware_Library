@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usb_conf.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    usb config header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -69,7 +69,7 @@ extern "C" {
 #define OTG_PIN_ID                       GPIO_PINS_10
 
 #define OTG_PIN_SOF_GPIO                 GPIOA
-#define OTG_PIN_SOF_GPIO_CLOCK           CRM_GPIOB_PERIPH_CLOCK
+#define OTG_PIN_SOF_GPIO_CLOCK           CRM_GPIOA_PERIPH_CLOCK
 #define OTG_PIN_SOF                      GPIO_PINS_8
 
 /**
@@ -84,7 +84,7 @@ extern "C" {
 #define USBD_EP0_TX_SIZE                 24
 #define USBD_EP1_TX_SIZE                 64
 #define USBD_EP2_TX_SIZE                 20
-#define USBD_EP3_TX_SIZE                 4
+#define USBD_EP3_TX_SIZE                 16
 
 /**
   * @brief usb endpoint max num define

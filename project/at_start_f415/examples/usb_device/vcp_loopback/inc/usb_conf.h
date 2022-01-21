@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usb_conf.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    usb config header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -69,7 +69,7 @@ extern "C" {
 #define OTG_PIN_ID                       GPIO_PINS_10
 
 #define OTG_PIN_SOF_GPIO                 GPIOA
-#define OTG_PIN_SOF_GPIO_CLOCK           CRM_GPIOB_PERIPH_CLOCK
+#define OTG_PIN_SOF_GPIO_CLOCK           CRM_GPIOA_PERIPH_CLOCK
 #define OTG_PIN_SOF                      GPIO_PINS_8
 
 /**
@@ -109,11 +109,6 @@ extern "C" {
 #define USBH_RX_FIFO_SIZE                128
 #define USBH_NP_TX_FIFO_SIZE             96
 #define USBH_P_TX_FIFO_SIZE              96
-
-/* otg2 host fifo */
-#define USBH2_RX_FIFO_SIZE               128
-#define USBH2_NP_TX_FIFO_SIZE            96
-#define USBH2_P_TX_FIFO_SIZE             96
 #endif
 
 /**

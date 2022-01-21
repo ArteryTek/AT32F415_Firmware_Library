@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -96,7 +96,7 @@ int main(void)
       report_buf[1] = (~report_buf[1]) & 0x1;
       class_send_report(&otg_core_struct.dev, report_buf, USBD_IN_MAXPACKET_SIZE);
     }
-    delay_ms(10);
+    delay_ms(100);
   }
 }
 

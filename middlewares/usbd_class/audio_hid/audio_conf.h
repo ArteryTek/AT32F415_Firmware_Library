@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     audio_conf.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    usb audio config
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -48,7 +48,7 @@ extern "C" {
 #define AUDIO_SUPPORT_MIC                1
 #define AUDIO_SUPPORT_FEEDBACK           1
 
-#define AUDIO_SUPPORT_FREQ_16K           1
+#define AUDIO_SUPPORT_FREQ_16K           0
 #define AUDIO_SUPPORT_FREQ_48K           1
 
 

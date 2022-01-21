@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -117,17 +117,17 @@ int main(void)
   {
     /* generate hall signal */
     gpio_bits_set(GPIOA, GPIO_PINS_3);
-    delay_us(100);
+    delay_us(10);
     gpio_bits_set(GPIOA, GPIO_PINS_6);
-    delay_us(100);
+    delay_us(10);
     gpio_bits_set(GPIOA, GPIO_PINS_7);
-    delay_us(100);
+    delay_us(10);
     gpio_bits_reset(GPIOA, GPIO_PINS_3);
-    delay_us(100);
+    delay_us(10);
     gpio_bits_reset(GPIOA, GPIO_PINS_6);
-    delay_us(100);
+    delay_us(10);
     gpio_bits_reset(GPIOA, GPIO_PINS_7);
-    delay_us(100);
+    delay_us(10);
   }
 }
 

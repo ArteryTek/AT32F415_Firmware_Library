@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_debug.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    at32f415 debug header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -133,7 +133,7 @@ typedef struct
   * @}
   */
 
-#define DEBUG                           ((debug_type *) DEBUG_BASE)
+#define DEBUGMCU                         ((debug_type *) DEBUG_BASE)
 
 /** @defgroup DEBUG_exported_functions
   * @{

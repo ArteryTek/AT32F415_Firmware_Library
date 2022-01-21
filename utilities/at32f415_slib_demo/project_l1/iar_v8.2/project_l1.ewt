@@ -2396,6 +2396,9 @@
             <name>$PROJ_DIR$\..\..\..\..\libraries\drivers\src\at32f415_crm.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\..\libraries\drivers\src\at32f415_usart.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\..\..\libraries\drivers\src\at32f415_flash.c</name>
         </file>
         <file>

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     audio_desc.h
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    usb audio descriptor header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -51,7 +51,7 @@ extern "C" {
 #define BCD_NUM                          0x0100
 
 #define USBD_VENDOR_ID                   0x2E3C
-#define USBD_PRODUCT_ID                  0x5550
+#define USBD_PRODUCT_ID                  0x5555
 
 #define USBD_SIZ_STRING_LANGID           4
 #define USBD_SIZ_STRING_SERIAL           0x1A

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_dma.c
-  * @version  v2.0.0
-  * @date     2021-11-26
+  * @version  v2.0.2
+  * @date     2021-12-31
   * @brief    contains all the functions for the dma firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -214,8 +214,7 @@ void dma_channel_enable(dma_channel_type* dmax_channely, confirm_state new_state
   *         - FLEX_CHANNEL4 
   *         - FLEX_CHANNEL5      
   *         - FLEX_CHANNEL6  
-  *         - FLEX_CHANNEL7      
-  *         - DMA2_CHANNEL8      
+  *         - FLEX_CHANNEL7        
   * @param  flexible_request: every peripheral have specified hardware_id.
   *         this parameter can be one of the following values:    
   *         - DMA_FLEXIBLE_ADC1         - DMA_FLEXIBLE_SPI1_RX      - DMA_FLEXIBLE_SPI1_TX      - DMA_FLEXIBLE_SPI2_RX     
@@ -342,9 +341,9 @@ flag_status dma_flag_get(uint32_t dmax_flag)
   */
 void dma_flag_clear(uint32_t dmax_flag)
 {
-  if(dmax_flag > 0x10000000)
+  if(dmax_flag > ((uint32_t)0x10000000))
   {
-    DMA2->clr = dmax_flag;  
+    DMA2->clr = (uint32_t)(dmax_flag & 0x0FFFFFFF);
   }
   else
   {

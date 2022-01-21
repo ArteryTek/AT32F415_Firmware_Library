@@ -428,6 +428,11 @@
               <FilePath>..\..\..\..\libraries\drivers\src\at32f415_crm.c</FilePath>
             </File>
             <File>
+              <FileName>at32f415_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\libraries\drivers\src\at32f415_usart.c</FilePath>
+            </File>
+            <File>
               <FileName>at32f415_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\libraries\drivers\src\at32f415_flash.c</FilePath>
