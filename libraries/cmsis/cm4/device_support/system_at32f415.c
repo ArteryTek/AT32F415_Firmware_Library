@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     system_at32f415.c
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    contains all the functions for cmsis cortex-m4 system source file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -63,6 +63,11 @@ unsigned int system_core_clock           = HICK_VALUE; /*!< system clock frequen
   */
 void SystemInit (void)
 {
+  /* enable low power mode */
+  CRM->apb1en_bit.pwcen = 1;
+  *(volatile uint8_t *)(0x40007050) |= (uint8_t)(0x1 << 2);
+  CRM->apb1en_bit.pwcen = 0;
+
   /* reset the crm clock configuration to the default reset state(for debug purpose) */
   /* set hicken bit */
   CRM->ctrl_bit.hicken = TRUE;

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -80,8 +80,8 @@ int main(void)
   usbd_init(&otg_core_struct,
             USB_FULL_SPEED_CORE_ID,
             USB_ID,
-            &class_handler,
-            &desc_handler);
+            &printer_class_handler,
+            &printer_desc_handler);
 
   while(1)
   {

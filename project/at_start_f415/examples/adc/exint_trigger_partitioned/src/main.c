@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -147,8 +147,6 @@ static void adc_config(void)
   crm_adc_clock_div_set(CRM_ADC_DIV_6);
   nvic_irq_enable(ADC1_IRQn, 0, 0);
 
-  /* select combine mode */
-  adc_combine_mode_select(ADC_INDEPENDENT_MODE);
   adc_base_default_para_init(&adc_base_struct);
   adc_base_struct.sequence_mode = TRUE;
   adc_base_struct.repeat_mode = FALSE;

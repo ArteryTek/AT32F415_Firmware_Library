@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_debug.h
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    at32f415 debug header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -48,7 +48,7 @@ extern "C" {
   * @{
   */
 #define DEBUG_SLEEP                        ((uint32_t)0x00000001) /*!< debug sleep mode */
-#define DEBUG_STOP                         ((uint32_t)0x00000002) /*!< debug deepsleep mode */ 
+#define DEBUG_DEEPSLEEP                    ((uint32_t)0x00000002) /*!< debug deepsleep mode */ 
 #define DEBUG_STANDBY                      ((uint32_t)0x00000004) /*!< debug standby mode */
 #define DEBUG_WDT_PAUSE                    ((uint32_t)0x00000100) /*!< debug watchdog timer pause */
 #define DEBUG_WWDT_PAUSE                   ((uint32_t)0x00000200) /*!< debug window watchdog timer pause */ 
@@ -111,18 +111,18 @@ typedef struct
       __IO uint32_t can1_pause           : 1;/* [14] */
       __IO uint32_t i2c1_smbus_timeout   : 1;/* [15] */
       __IO uint32_t i2c2_smbus_timeout   : 1;/* [16] */
-      __IO uint32_t tim8_pause           : 1;/* [17] */
-      __IO uint32_t tim5_pause           : 1;/* [18] */
-      __IO uint32_t tim6_pause           : 1;/* [19] */
-      __IO uint32_t tim7_pause           : 1;/* [20] */
+      __IO uint32_t tmr8_pause           : 1;/* [17] */
+      __IO uint32_t tmr5_pause           : 1;/* [18] */
+      __IO uint32_t tmr6_pause           : 1;/* [19] */
+      __IO uint32_t tmr7_pause           : 1;/* [20] */
       __IO uint32_t can2_pause           : 1;/* [21] */
       __IO uint32_t reserved2            : 3;/* [24:22] */
-      __IO uint32_t tim12_pause          : 1;/* [25] */
-      __IO uint32_t tim13_pause          : 1;/* [26] */
-      __IO uint32_t tim14_pause          : 1;/* [27] */
-      __IO uint32_t tim9_pause           : 1;/* [28] */
-      __IO uint32_t tim10_pause          : 1;/* [29] */
-      __IO uint32_t tim11_pause          : 1;/* [30] */
+      __IO uint32_t tmr12_pause          : 1;/* [25] */
+      __IO uint32_t tmr13_pause          : 1;/* [26] */
+      __IO uint32_t tmr14_pause          : 1;/* [27] */
+      __IO uint32_t tmr9_pause           : 1;/* [28] */
+      __IO uint32_t tmr10_pause          : 1;/* [29] */
+      __IO uint32_t tmr11_pause          : 1;/* [30] */
       __IO uint32_t i2c3_smbus_timeout   : 1;/* [31] */
     } ctrl_bit;
   };

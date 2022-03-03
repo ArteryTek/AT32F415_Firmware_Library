@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usb_conf.h
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    usb config header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -138,8 +138,9 @@ extern "C" {
   *        at32f415xx revision C: (support)
   *        ignore vbus detection, the internal vbus is always valid.
   *        the vbus pin (pa9) can be used for other functionality.
+  *        note: host mode can use vbus ignore
   */
-/* #define USB_VBUS_IGNORE */
+#define USB_VBUS_IGNORE
 
 /**
   * @brief usb low power wakeup handler enable

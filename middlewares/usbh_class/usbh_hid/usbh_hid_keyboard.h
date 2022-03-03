@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usbh_hid_keyboard.h
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    usb host hid keyboard header file
   **************************************************************************
   *                       Copyright notice & Disclaimer

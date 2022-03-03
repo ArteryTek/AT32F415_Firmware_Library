@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_debug.c
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    contains all the functions for the debug firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -55,7 +55,7 @@ uint32_t debug_device_id_get(void)
   * @param  periph_debug_mode
   *         this parameter can be any combination of the following values: 
             - DEBUG_SLEEP                       
-            - DEBUG_STOP                       
+            - DEBUG_DEEPSLEEP                        
             - DEBUG_STANDBY                      
             - DEBUG_WDT_PAUSE                   
             - DEBUG_WWDT_PAUSE                    

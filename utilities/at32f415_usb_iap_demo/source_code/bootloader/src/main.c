@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.2
-  * @date     2021-12-31
+  * @version  v2.0.3
+  * @date     2022-02-11
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -160,7 +160,6 @@ void usb_gpio_config(void)
   crm_periph_clock_enable(OTG_PIN_SOF_GPIO_CLOCK, TRUE);
   gpio_init_struct.gpio_pins = OTG_PIN_SOF;
   gpio_init(OTG_PIN_SOF_GPIO, &gpio_init_struct);
-  gpio_pin_mux_config(OTG_PIN_GPIO, OTG_PIN_SOF_SOURCE, OTG_PIN_MUX);
 #endif
 
   /* otgfs use vbus pin */
