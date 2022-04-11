@@ -1,17 +1,17 @@
 /**
   **************************************************************************
   * @file     at32f415_int.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main interrupt service routines.
   **************************************************************************
   *                       Copyright notice & Disclaimer
   *
-  * The software Board Support Package (BSP) that is made available to 
-  * download from Artery official website is the copyrighted work of Artery. 
-  * Artery authorizes customers to use, copy, and distribute the BSP 
-  * software and its related documentation for the purpose of design and 
-  * development in conjunction with Artery microcontrollers. Use of the 
+  * The software Board Support Package (BSP) that is made available to
+  * download from Artery official website is the copyrighted work of Artery.
+  * Artery authorizes customers to use, copy, and distribute the BSP
+  * software and its related documentation for the purpose of design and
+  * development in conjunction with Artery microcontrollers. Use of the
   * software is governed by this copyright notice and the following disclaimer.
   *
   * THIS SOFTWARE IS PROVIDED ON "AS IS" BASIS WITHOUT WARRANTIES,
@@ -136,7 +136,7 @@ __IO uint16_t capturenumber = 0;
 __IO uint32_t ch1readvalue1 = 0, ch1readvalue2 = 0;
 void TMR1_CH_IRQHandler(void)
 {
-  TMR1->ists=0;  
+  TMR1->ists=0;
   switch(capturenumber)
   {
 
@@ -146,19 +146,19 @@ void TMR1_CH_IRQHandler(void)
             break;
     case 1:
             ch1readvalue2=TMR1->c1dt;
-            capturenumber = 2;         
+            capturenumber = 2;
             break;
     default:
             TMR1->ists=0;
             break;
-  } 
+  }
 }
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}
-  */ 
+  */
 

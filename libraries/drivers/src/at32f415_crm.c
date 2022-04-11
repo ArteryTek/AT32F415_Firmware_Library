@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_crm.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    contains all the functions for the crm firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -500,7 +500,7 @@ void crm_battery_powered_domain_reset(confirm_state new_state)
   CRM->bpdc_bit.bpdrst = new_state;
 }
 
-/** 
+/**
   * @brief  config crm pll
   * @param  clock_source
   *         this parameter can be one of the following values:
@@ -569,7 +569,7 @@ void crm_pll_config(crm_pll_clock_source_type clock_source, crm_pll_mult_type mu
   CRM->pll_bit.pllfref = pllfref;
 }
 
-/** 
+/**
   * @brief  config crm pll function2, another method.
   *                        pll_rcs_freq * pll_ns
   *         pll clock = --------------------------------
@@ -697,7 +697,7 @@ void crm_clocks_freq_get(crm_clocks_freq_type *clocks_struct)
         /* get multiplication factor */
         pll_mult = CRM->cfg_bit.pllmult_l;
         pll_mult_h = CRM->cfg_bit.pllmult_h;
-        
+
         /* process high bits */
         if((pll_mult_h != 0U) || (pll_mult == 15U))
         {
@@ -707,7 +707,7 @@ void crm_clocks_freq_get(crm_clocks_freq_type *clocks_struct)
         {
             pll_mult += 2U;
         }
-        
+
         if (pll_clock_source == 0x00)
         {
           /* hick divided by 2 selected as pll clock entry */
@@ -751,7 +751,7 @@ void crm_clocks_freq_get(crm_clocks_freq_type *clocks_struct)
             pllrcsfreq = HEXT_VALUE;
           }
         }
-        clocks_struct->sclk_freq = (pllrcsfreq * pll_ns) / (pll_ms * (0x1 << pll_fr));
+        clocks_struct->sclk_freq = (uint32_t)(((uint64_t)pllrcsfreq * pll_ns) / (pll_ms * (0x1 << pll_fr)));
       }
       break;
     default:

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -175,7 +175,7 @@ static void gpio_config(void)
   gpio_initstructure.gpio_mode           = GPIO_MODE_INPUT;
   gpio_initstructure.gpio_pins           = GPIO_PINS_15;
   gpio_init(GPIOB, &gpio_initstructure);
-  
+
   /* slave cs pin */
   gpio_initstructure.gpio_pull           = GPIO_PULL_UP;
   gpio_initstructure.gpio_mode           = GPIO_MODE_INPUT;

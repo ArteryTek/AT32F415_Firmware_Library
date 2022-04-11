@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -78,10 +78,10 @@ int main(void)
   system_clock_config();
 
   at32_board_init();
-  
+
   /* usart gpio config */
   usart_gpio_config();
-  
+
   /* hardware usart config: usart2 */
   usb_usart_config(linecoding);
 
@@ -111,13 +111,13 @@ int main(void)
   {
     /* get usb vcp receive data */
     data_len = usb_vcp_get_rxdata(&otg_core_struct.dev, usb_buffer);
-    
-    /* send data to hardware usart */    
+
+    /* send data to hardware usart */
     if(data_len > 0)
     {
       usart_send_data(usb_buffer, data_len);
     }
-    
+
     /* if hardware usart received data,usb send data to host */
     usart_rx_data_len = usart_receive_data();
     if(usart_rx_data_len || send_zero_packet == 1)
@@ -129,8 +129,8 @@ int main(void)
         send_zero_packet = 0;
 
       timeout = 50000;
-      
-      if((hw_usart_read_index + usart_rx_data_len) < usart_buffer_size)   
+
+      if((hw_usart_read_index + usart_rx_data_len) < usart_buffer_size)
       {
         do
         {
@@ -138,11 +138,11 @@ int main(void)
           if(usb_vcp_send_data(&otg_core_struct.dev, &usart_rx_buffer[hw_usart_read_index], usart_rx_data_len) == SUCCESS)
           {
             hw_usart_read_index = hw_usart_read_index + usart_rx_data_len;
-            
+
             break;
           }
         }while(timeout --);
-        
+
       }
       /* process the fifo overflow */
       else
@@ -188,7 +188,7 @@ void usart_send_data(uint8_t *send_data, uint16_t len)
     {
       ;
     }while(usart_flag_get(USART2, USART_TDBE_FLAG) == RESET);
-    
+
     usart_data_transmit(USART2, send_data[index]);
   }
 }
@@ -215,7 +215,7 @@ uint16_t usart_receive_data(void)
     else
       usart_data_len = (usart_buffer_size-1) + hw_usart_rx_index - hw_usart_read_index;
   }
-  
+
   return usart_data_len;
 }
 
@@ -248,7 +248,7 @@ void usb_usart_config( linecoding_type linecoding)
   /* enable the usart2 and gpio clock */
   crm_periph_clock_enable(CRM_USART2_PERIPH_CLOCK, FALSE);
   crm_periph_clock_enable(CRM_USART2_PERIPH_CLOCK, TRUE);
-  
+
   /* stop bit */
   switch(linecoding.format)
   {
@@ -270,9 +270,9 @@ void usb_usart_config( linecoding_type linecoding)
   {
     /* hardware usart not support data bits for 5/6 */
     case 0x5:
-    case 0x6:      
+    case 0x6:
     case 0x7:
-      break;    
+      break;
     case 0x8:
       usart_data_bit = USART_DATA_8BITS;
       break;
@@ -280,7 +280,7 @@ void usb_usart_config( linecoding_type linecoding)
     case 0x10:
       break;
     default :
-      break;   
+      break;
   }
   /* parity */
   switch(linecoding.parity)
@@ -303,13 +303,13 @@ void usb_usart_config( linecoding_type linecoding)
   }
 
   nvic_irq_enable(USART2_IRQn, 0, 0);
-  
+
   /* configure usart2 param */
   usart_init(USART2, linecoding.bitrate, usart_data_bit, usart_stop_bit);
   usart_parity_selection_config(USART2, usart_parity_select);
   usart_transmitter_enable(USART2, TRUE);
   usart_receiver_enable(USART2, TRUE);
-  
+
   /* enable usart2 interrupt */
   usart_interrupt_enable(USART2, USART_RDBF_INT, TRUE);
   usart_enable(USART2, TRUE);
@@ -322,9 +322,9 @@ void usb_usart_config( linecoding_type linecoding)
   */
 void usart_gpio_config(void)
 {
-  gpio_init_type gpio_init_struct;   
+  gpio_init_type gpio_init_struct;
   crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
-  
+
   /* configure the usart2 tx pin */
   gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
   gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
@@ -332,7 +332,7 @@ void usart_gpio_config(void)
   gpio_init_struct.gpio_pins = GPIO_PINS_2;
   gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
   gpio_init(GPIOA, &gpio_init_struct);
-  
+
   /* configure the usart2 rx pin */
   gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
   gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
@@ -340,7 +340,7 @@ void usart_gpio_config(void)
   gpio_init_struct.gpio_pins = GPIO_PINS_3;
   gpio_init_struct.gpio_pull = GPIO_PULL_UP;
   gpio_init(GPIOA, &gpio_init_struct);
-  
+
 }
 
 /**
@@ -376,7 +376,7 @@ void usb_clock48m_select(usb_clk48_s clk_s)
       case 144000000:
         crm_usb_clock_div_set(CRM_USB_DIV_3);
         break;
-      
+
       default:
         break;
     }

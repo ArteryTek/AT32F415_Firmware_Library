@@ -1,17 +1,17 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
   *
-  * The software Board Support Package (BSP) that is made available to 
-  * download from Artery official website is the copyrighted work of Artery. 
-  * Artery authorizes customers to use, copy, and distribute the BSP 
-  * software and its related documentation for the purpose of design and 
-  * development in conjunction with Artery microcontrollers. Use of the 
+  * The software Board Support Package (BSP) that is made available to
+  * download from Artery official website is the copyrighted work of Artery.
+  * Artery authorizes customers to use, copy, and distribute the BSP
+  * software and its related documentation for the purpose of design and
+  * development in conjunction with Artery microcontrollers. Use of the
   * software is governed by this copyright notice and the following disclaimer.
   *
   * THIS SOFTWARE IS PROVIDED ON "AS IS" BASIS WITHOUT WARRANTIES,
@@ -54,7 +54,7 @@ uint16_t i2s2_buffer_rx[32];
 uint16_t spi2_buffer_rx[32];
 __IO uint32_t tx_index = 0, rx_index = 0;
 volatile error_status transfer_status1 = ERROR, transfer_status2 = ERROR, transfer_status3 = ERROR;
-                                  
+
 static void gpio_config(void);
 static void spi_config(void);
 static void i2s_config(i2s_operation_mode_type i2s1_mode, i2s_operation_mode_type i2s2_mode);
@@ -79,7 +79,7 @@ error_status buffer_compare(uint16_t* pbuffer1, uint16_t* pbuffer2, uint16_t buf
   }
   return SUCCESS;
 }
-                                        
+
 /**
   * @brief  i2s configuration.
   * @param  none
@@ -88,10 +88,10 @@ error_status buffer_compare(uint16_t* pbuffer1, uint16_t* pbuffer2, uint16_t buf
 static void i2s_config(i2s_operation_mode_type i2s1_mode, i2s_operation_mode_type i2s2_mode)
 {
   i2s_init_type i2s_init_struct;
-  
+
   crm_periph_clock_enable(CRM_SPI1_PERIPH_CLOCK, TRUE);
   crm_periph_clock_enable(CRM_SPI2_PERIPH_CLOCK, TRUE);
-  
+
   spi_i2s_reset(SPI2);
   spi_i2s_reset(SPI1);
   i2s_default_para_init(&i2s_init_struct);
@@ -102,7 +102,7 @@ static void i2s_config(i2s_operation_mode_type i2s1_mode, i2s_operation_mode_typ
   i2s_init_struct.clock_polarity = I2S_CLOCK_POLARITY_LOW;
   i2s_init_struct.operation_mode = i2s1_mode;
   i2s_init(SPI1, &i2s_init_struct);
-  
+
   i2s_init_struct.operation_mode =i2s2_mode;
   i2s_init(SPI2, &i2s_init_struct);
 }
@@ -117,7 +117,7 @@ static void spi_config(void)
   spi_init_type spi_init_struct;
   crm_periph_clock_enable(CRM_SPI1_PERIPH_CLOCK, TRUE);
   crm_periph_clock_enable(CRM_SPI2_PERIPH_CLOCK, TRUE);
-  
+
   spi_i2s_reset(SPI2);
   spi_i2s_reset(SPI1);
   spi_default_para_init(&spi_init_struct);
@@ -130,11 +130,11 @@ static void spi_config(void)
   spi_init_struct.clock_phase = SPI_CLOCK_PHASE_2EDGE;
   spi_init_struct.cs_mode_selection = SPI_CS_SOFTWARE_MODE;
   spi_init(SPI1, &spi_init_struct);
-  
+
   spi_init_struct.transmission_mode = SPI_TRANSMIT_SIMPLEX_RX;
   spi_init_struct.master_slave_mode =SPI_MODE_SLAVE;
   spi_init(SPI2, &spi_init_struct);
-  
+
   spi_enable(SPI2, TRUE);
   spi_enable(SPI1, TRUE);
 }
@@ -149,48 +149,48 @@ static void gpio_config(void)
   gpio_init_type gpio_initstructure;
   crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
   crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
-  
+
   /* master ws pin */
-  gpio_initstructure.gpio_out_type       = GPIO_OUTPUT_PUSH_PULL;  
-  gpio_initstructure.gpio_pull           = GPIO_PULL_UP;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+  gpio_initstructure.gpio_out_type       = GPIO_OUTPUT_PUSH_PULL;
+  gpio_initstructure.gpio_pull           = GPIO_PULL_UP;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
   gpio_initstructure.gpio_pins           = GPIO_PINS_4;
   gpio_init(GPIOA, &gpio_initstructure);
-  
+
   /* master ck pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_5;
   gpio_init(GPIOA, &gpio_initstructure);
-  
-  /* master sd pin */ 
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+
+  /* master sd pin */
+  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_7;
   gpio_init(GPIOA, &gpio_initstructure);
-  
+
   /* master mck pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_0;
   gpio_init(GPIOB, &gpio_initstructure);
-  
+
   /* slave ws pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_UP;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+  gpio_initstructure.gpio_pull           = GPIO_PULL_UP;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_12;
   gpio_init(GPIOB, &gpio_initstructure);
-  
+
   /* slave ck pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_13;
   gpio_init(GPIOB, &gpio_initstructure);
-  
-  /* slave sd pin */ 
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;  
-  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;  
+
+  /* slave sd pin */
+  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
+  gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_15;
   gpio_init(GPIOB, &gpio_initstructure);
 }
@@ -219,10 +219,10 @@ int main(void)
     while(spi_i2s_flag_get(SPI2, SPI_I2S_RDBF_FLAG) == RESET);
     i2s2_buffer_rx[rx_index++] = spi_i2s_data_receive(SPI2);
   }
-  
+
   /* test result:the data check */
   transfer_status1 = buffer_compare(i2s2_buffer_rx, i2s1_buffer_tx, 32);
-  
+
   tx_index = 0;
   rx_index = 0;
   spi_config();
@@ -233,7 +233,7 @@ int main(void)
     while(spi_i2s_flag_get(SPI2, SPI_I2S_RDBF_FLAG) == RESET);
     spi2_buffer_rx[rx_index++] = spi_i2s_data_receive(SPI2);
   }
-  
+
   /* test result:the data check */
   transfer_status2 = buffer_compare(spi2_buffer_rx, SPI1_buffer_tx, 32);
 
@@ -252,15 +252,15 @@ int main(void)
     while(spi_i2s_flag_get(SPI1, SPI_I2S_TDBE_FLAG) == RESET);
     spi_i2s_data_transmit(SPI1, i2s1_buffer_tx[tx_index++]);
   }
-  
+
   /* test result:the data check */
   transfer_status3 = buffer_compare(i2s2_buffer_rx, i2s1_buffer_tx, 32);
-  
+
   /* test result indicate:if passed ,led2 lights */
   if((transfer_status1 == SUCCESS) && (transfer_status2 == SUCCESS) && (transfer_status3 == SUCCESS))
   {
     at32_led_on(LED2);
-  }    
+  }
   else
   {
     at32_led_off(LED2);
@@ -272,8 +272,8 @@ int main(void)
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}
-  */ 
+  */

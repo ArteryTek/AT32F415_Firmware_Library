@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -65,7 +65,7 @@ void cmp_config(void)
   gpio_init_struct.gpio_pins = GPIO_PINS_0;
   gpio_init_struct.gpio_mode = GPIO_MODE_MUX;
   gpio_init(GPIOA, &gpio_init_struct);
-  
+
   gpio_pin_remap_config(TMR1_CH1_CMP_GMUX_10, TRUE);
 
   /* cmp peripheral clock enable */

@@ -1,7 +1,7 @@
 ;**************************************************************************
 ;* @file     startup_at32f415.s
-;* @version  v2.0.3
-;* @date     2022-02-11
+;* @version  v2.0.4
+;* @date     2022-04-02
 ;* @brief    at32f415 startup file for IAR Systems
 ;**************************************************************************
 ;
@@ -280,15 +280,15 @@ ADC1_IRQHandler
 CAN1_TX_IRQHandler
         B CAN1_TX_IRQHandler
 
-        PUBWEAK CAN1_RX0_IRQHandler 
+        PUBWEAK CAN1_RX0_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)
-CAN1_RX0_IRQHandler 
-        B CAN1_RX0_IRQHandler 
+CAN1_RX0_IRQHandler
+        B CAN1_RX0_IRQHandler
 
-        PUBWEAK CAN1_RX1_IRQHandler 
+        PUBWEAK CAN1_RX1_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)
-CAN1_RX1_IRQHandler 
-        B CAN1_RX1_IRQHandler 
+CAN1_RX1_IRQHandler
+        B CAN1_RX1_IRQHandler
 
         PUBWEAK CAN1_SE_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)

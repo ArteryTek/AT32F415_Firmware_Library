@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -109,7 +109,7 @@ int main(void)
 
   /* usb gpio config */
   usb_gpio_config();
-  
+
   uart_print_init(115200);
 
 #ifdef USB_LOW_POWER_WAKUP

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -152,7 +152,7 @@ void usb_clock48m_select(usb_clk48_s clk_s)
       case 144000000:
         crm_usb_clock_div_set(CRM_USB_DIV_3);
         break;
-      
+
       default:
         break;
     }

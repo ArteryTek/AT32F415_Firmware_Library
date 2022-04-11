@@ -1,17 +1,17 @@
 /**
   **************************************************************************
   * @file     at32f415_cmp.c
-  * @version  v2.0.3
-  * @date     2022-02-11
+  * @version  v2.0.4
+  * @date     2022-04-02
   * @brief    contains all the functions for the gpio firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
   *
-  * The software Board Support Package (BSP) that is made available to 
-  * download from Artery official website is the copyrighted work of Artery. 
-  * Artery authorizes customers to use, copy, and distribute the BSP 
-  * software and its related documentation for the purpose of design and 
-  * development in conjunction with Artery microcontrollers. Use of the 
+  * The software Board Support Package (BSP) that is made available to
+  * download from Artery official website is the copyrighted work of Artery.
+  * Artery authorizes customers to use, copy, and distribute the BSP
+  * software and its related documentation for the purpose of design and
+  * development in conjunction with Artery microcontrollers. Use of the
   * software is governed by this copyright notice and the following disclaimer.
   *
   * THIS SOFTWARE IS PROVIDED ON "AS IS" BASIS WITHOUT WARRANTIES,
@@ -34,7 +34,7 @@
   * @brief CMP driver modules
   * @{
   */
-  
+
 #ifdef CMP_MODULE_ENABLED
 
 /** @defgroup CMP_private_functions
@@ -43,10 +43,10 @@
 
 #define CMP_CTRLSTS1_CLEAR_MASK              ((uint32_t)0x00039C7C)
 #define CMP_INPINPUT_CLEAR_MASK              ((uint32_t)0x00000180)
-#define CMP_HIGH_PULSE_CLEAR_MASK            ((uint16_t)0x003F) 
+#define CMP_HIGH_PULSE_CLEAR_MASK            ((uint16_t)0x003F)
 #define CMP_LOW_PULSE_CLEAR_MASK             ((uint16_t)0x003F)
-  
-/** 
+
+/**
   * @brief  reset the cmp register
   * @param  none
   * @retval none
@@ -57,7 +57,7 @@ void cmp_reset(void)
   crm_periph_reset(CRM_CMP_PERIPH_RESET, FALSE);
 }
 
-/** 
+/**
   * @brief  initialize the cmp peripheral
   * @param  cmp_sel: to select the cmp peripheral
   *         this parameter only can be CMP1_SELECTION
@@ -88,7 +88,7 @@ void cmp_init(cmp_sel_type cmp_sel, cmp_init_type* cmp_init_struct)
 
 /**
   * @brief  fill each cmp_init_type member with its default value.
-  * @param  cmp_init_type : pointer to a cmp_init_type structure 
+  * @param  cmp_init_type : pointer to a cmp_init_type structure
   *         which will be initialized.
   * @retval none
   */
