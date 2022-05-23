@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     printer_desc.h
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    usb printer descriptor header file
   **************************************************************************
   *                       Copyright notice & Disclaimer

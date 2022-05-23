@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -11,4 +11,6 @@
   added 4 each period.
   pin connection:
   - pa0    <--->    pa2
-  - pa1    <--->    pa3  
+  - pa1    <--->    pa3 
+
+  for more detailed information. please refer to the application note document AN0085. 

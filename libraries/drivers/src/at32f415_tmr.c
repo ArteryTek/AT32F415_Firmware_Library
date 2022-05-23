@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_tmr.c
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    contains all the functions for the tmr firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer

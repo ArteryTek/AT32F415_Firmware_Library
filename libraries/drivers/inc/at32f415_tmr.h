@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_tmr.h
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    at32f415 tmr header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -834,15 +834,9 @@ typedef struct
 #define TMR3                             ((tmr_type *) TMR3_BASE)
 #define TMR4                             ((tmr_type *) TMR4_BASE)
 #define TMR5                             ((tmr_type *) TMR5_BASE)
-#define TMR6                             ((tmr_type *) TMR6_BASE)
-#define TMR7                             ((tmr_type *) TMR7_BASE)
-#define TMR8                             ((tmr_type *) TMR8_BASE)
 #define TMR9                             ((tmr_type *) TMR9_BASE)
 #define TMR10                            ((tmr_type *) TMR10_BASE)
 #define TMR11                            ((tmr_type *) TMR11_BASE)
-#define TMR12                            ((tmr_type *) TMR12_BASE)
-#define TMR13                            ((tmr_type *) TMR13_BASE)
-#define TMR14                            ((tmr_type *) TMR14_BASE)
 
 /** @defgroup TMR_exported_functions
   * @{

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -16,3 +16,5 @@
   the tmr4 is running:
   - at (tmr2 frequency)/ (tmr4 period + 1) = 200 khz and a duty cycle
   equal to tmr4_c1dt/(tmr4_pr + 1) = 60%
+
+  for more detailed information. please refer to the application note document AN0085.

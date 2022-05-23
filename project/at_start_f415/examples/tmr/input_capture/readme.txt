@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -12,3 +12,5 @@
   the minimum frequency value to measure is 2.19 khz(144m/65536).
   set-up
   - connect the external signal to measure to the tim3 ch2 pin (pa7).    
+
+  for more detailed information. please refer to the application note document AN0085.

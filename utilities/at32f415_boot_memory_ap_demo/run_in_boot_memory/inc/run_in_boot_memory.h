@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     run_in_boot_memory.h
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    run in boot memory file
   **************************************************************************
   *                       Copyright notice & Disclaimer

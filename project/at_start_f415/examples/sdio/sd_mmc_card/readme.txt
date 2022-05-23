@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -17,4 +17,5 @@
   - sdio1_d2                    pc10         --->   dat2
   - sdio1_d3                    pc11         --->   dat3
   - sdio1_ck                    pc12         --->   clk
-  - sdio1_cmd                   pd2          --->   cmd
+  - sdio1_cmd                   pd2          --->   cmd
+  for more detailed information. please refer to the application note document AN0105.

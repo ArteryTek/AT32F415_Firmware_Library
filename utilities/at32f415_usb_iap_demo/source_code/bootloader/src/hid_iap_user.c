@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     hid_iap_user.c
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    usb hid iap user file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -477,6 +477,7 @@ void iap_loop(void)
 {
   if(iap_info.state == IAP_STS_JMP)
   {
+  	delay_ms(100);
     jump_to_app(iap_info.app_address);
   }
 }

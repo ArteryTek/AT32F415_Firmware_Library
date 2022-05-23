@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     custom_hid_class.c
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    usb custom hid class type
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -375,6 +375,7 @@ static void usb_hid_buf_process(void *udev, uint8_t *report, uint16_t len)
         pcshid->g_txhid_buff[i_index] = report[i_index];
       }
       usbd_ept_send(pudev, USBD_CUSTOM_HID_IN_EPT, pcshid->g_txhid_buff, len);
+      break;
     default:
       break;
   }

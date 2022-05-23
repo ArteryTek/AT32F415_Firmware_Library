@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     cdc_keyboard_desc.c
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    usb cdc and keyboard device descriptor
   **************************************************************************
   *                       Copyright notice & Disclaimer

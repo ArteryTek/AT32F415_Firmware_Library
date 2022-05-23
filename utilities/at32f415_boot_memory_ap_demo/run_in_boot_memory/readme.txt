@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt 
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -14,6 +14,6 @@
   step2 : add the algorithm file of bootmem_ap in the project.
   step3 : executing this demo, in this project, codes in main block run usart
           for printing messages, while codes in boot memory run led toggle.
-
+  for more detailed information. please refer to the application note document AN0066.
 
 

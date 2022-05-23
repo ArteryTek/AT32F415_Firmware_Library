@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usbh_msc_bot_scsi.h
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    usb host msc bulk-only transfer and scsi header file
   **************************************************************************
   *                       Copyright notice & Disclaimer

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -217,7 +217,7 @@ void OTG_WKUP_HANDLER(void)
   * @param  none
   * @retval none
   */
-void usb_re_connect()
+void usb_reset()
 {
   delay_ms(1000);
   usbd_disconnect(&otg_core_struct.dev);
@@ -252,17 +252,17 @@ void flash_fat16_loop_status(void)
     case UPGRADE_SUCCESS:
       flash_fat16_set_name((const uint8_t *)"Success", 7);
       flash_iap.msc_up_status = UPGRADE_DONE;
-      usb_re_connect();
+      usb_reset();
       break;
-    case UPGRADE_ERROR:
-      flash_fat16_set_name((const uint8_t *)"error", 6);
+    case UPGRADE_FAILED:
+      flash_fat16_set_name((const uint8_t *)"Failed", 6);
       flash_iap.msc_up_status = UPGRADE_DONE;
-      usb_re_connect();
+      usb_reset();
       break;
     case UPGRADE_LARGE:
       flash_fat16_set_name((const uint8_t *)"Large", 5);
       flash_iap.msc_up_status = UPGRADE_DONE;
-      usb_re_connect();
+      usb_reset();
       break;
     case UPGRADE_UNKNOWN:
       flash_fat16_set_name((const uint8_t *)"Unkown", 6);

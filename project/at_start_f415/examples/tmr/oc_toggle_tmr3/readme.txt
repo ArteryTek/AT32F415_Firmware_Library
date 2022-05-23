@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.4
-  * @date     2022-04-02
+  * @version  v2.0.5
+  * @date     2022-05-20
   * @brief    readme
   **************************************************************************
   */
@@ -13,3 +13,5 @@
   cc2 overflow rate = tmr3 counter clock / ch2_val = 732.4 hz
   cc3 overflow rate = tmr3 counter clock / ch3_val = 1464.8 hz
   cc4 overflow rate = tmr3 counter clock / ch4_val = 2929.6 hz 
+
+  for more detailed information. please refer to the application note document AN0085.
