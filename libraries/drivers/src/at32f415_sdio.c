@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_sdio.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    contains all the functions for the sdio firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -82,22 +82,11 @@ void sdio_power_set(sdio_type *sdio_x, sdio_power_state_type power_state)
   * @param  sdio_x: to select the sdio peripheral.
   *         this parameter can be one of the following values:
   *         SDIO1.
-  * @retval flag_status (SET or RESET)
+  * @retval sdio_power_state_type (SDIO_POWER_ON or SDIO_POWER_OFF)
   */
-flag_status sdio_power_status_get(sdio_type *sdio_x)
+sdio_power_state_type sdio_power_status_get(sdio_type *sdio_x)
 {
-  flag_status flag = RESET;
-
-  if(sdio_x->pwrctrl_bit.ps == SDIO_POWER_ON)
-  {
-    flag = SET;
-  }
-  else if(sdio_x->pwrctrl_bit.ps == SDIO_POWER_OFF)
-  {
-    flag = RESET;
-  }
-
-  return flag;
+  return (sdio_power_state_type)(sdio_x->pwrctrl_bit.ps);
 }
 
 /**

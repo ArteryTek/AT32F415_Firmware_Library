@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_crm.h
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    at32f415 crm header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -896,7 +896,7 @@ void crm_hick_sclk_frequency_select(crm_hick_sclk_frequency_type value);
 void crm_usb_clock_source_select(crm_usb_clock_source_type value);
 void crm_clkout_div_set(crm_clkout_div_type clkout_div);
 void crm_otgfs_ep3_remap_enable(confirm_state new_state);
-void crm_usbdiv_reset(confirm_state new_state);
+void crm_usbdiv_reset(void);
 
 /**
   * @}

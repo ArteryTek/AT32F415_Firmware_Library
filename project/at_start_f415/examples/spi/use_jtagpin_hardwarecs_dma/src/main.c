@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -140,12 +140,6 @@ static void gpio_config(void)
   gpio_initstructure.gpio_pins           = GPIO_PINS_3;
   gpio_init(GPIOB, &gpio_initstructure);
 
-  /* master miso pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
-  gpio_initstructure.gpio_mode           = GPIO_MODE_INPUT;
-  gpio_initstructure.gpio_pins           = GPIO_PINS_4;
-  gpio_init(GPIOB, &gpio_initstructure);
-
   /* master mosi pin */
   gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
   gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
@@ -168,12 +162,6 @@ static void gpio_config(void)
   gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
   gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
   gpio_initstructure.gpio_pins           = GPIO_PINS_14;
-  gpio_init(GPIOB, &gpio_initstructure);
-
-  /* slave mosi pin */
-  gpio_initstructure.gpio_pull           = GPIO_PULL_DOWN;
-  gpio_initstructure.gpio_mode           = GPIO_MODE_INPUT;
-  gpio_initstructure.gpio_pins           = GPIO_PINS_15;
   gpio_init(GPIOB, &gpio_initstructure);
 
   /* slave cs pin */

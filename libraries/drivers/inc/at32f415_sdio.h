@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_sdio.h
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    at32f415 sdio header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -577,7 +577,7 @@ typedef struct
 
 void sdio_reset(sdio_type *sdio_x);
 void sdio_power_set(sdio_type *sdio_x, sdio_power_state_type power_state);
-flag_status sdio_power_status_get(sdio_type *sdio_x);
+sdio_power_state_type sdio_power_status_get(sdio_type *sdio_x);
 void sdio_clock_config(sdio_type *sdio_x, uint16_t clk_div, sdio_edge_phase_type clk_edg);
 void sdio_bus_width_config(sdio_type *sdio_x, sdio_bus_width_type width);
 void sdio_clock_bypass(sdio_type *sdio_x, confirm_state new_state);

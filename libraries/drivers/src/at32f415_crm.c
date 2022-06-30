@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_crm.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    contains all the functions for the crm firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -927,12 +927,13 @@ void crm_otgfs_ep3_remap_enable(confirm_state new_state)
   *
   *         at32f415xx revision C: (support)
   *         usb divider(CRM_CFG[usbdiv]) support to be reset.
-  * @param  new_state (TRUE or FALSE)
+  * @param  none
   * @retval none
   */
-void crm_usbdiv_reset(confirm_state new_state)
+void crm_usbdiv_reset(void)
 {
-  CRM->otg_extctrl_bit.usbdivrst = new_state;
+  CRM->otg_extctrl_bit.usbdivrst = 1;
+  CRM->otg_extctrl_bit.usbdivrst = 0;
 }
 
 /**

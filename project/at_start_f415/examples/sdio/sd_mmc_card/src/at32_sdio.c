@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32_sdio.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    this file provides a set of functions needed to manage the
   *           sdio/mmc card memory.
   **************************************************************************

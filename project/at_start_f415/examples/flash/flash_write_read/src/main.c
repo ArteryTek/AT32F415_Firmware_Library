@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     main.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    main program
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -49,7 +49,7 @@ error_status buffer_compare(uint16_t* p_buffer1, uint16_t* p_buffer2, uint16_t b
   * @param  p_buffer1, p_buffer2: buffers to be compared.
   * @param  buffer_length: buffer's length
   * @retval SUCCESS: p_buffer1 identical to p_buffer2
-  *         failed: p_buffer1 differs from p_buffer2
+  *         ERROR: p_buffer1 differs from p_buffer2
   */
 error_status buffer_compare(uint16_t* p_buffer1, uint16_t* p_buffer2, uint16_t buffer_length)
 {
@@ -73,6 +73,7 @@ error_status buffer_compare(uint16_t* p_buffer1, uint16_t* p_buffer2, uint16_t b
 int main(void)
 {
   uint32_t index=0;
+  error_status err_status;
   system_clock_config();
   at32_board_init();
   /* fill buffer_write data to test */
@@ -82,13 +83,13 @@ int main(void)
   }
 
   /* write data to flash */
-  flash_write(TEST_FLASH_ADDRESS_START, buffer_write, TEST_BUFEER_SIZE);
+  err_status = flash_write(TEST_FLASH_ADDRESS_START, buffer_write, TEST_BUFEER_SIZE);
 
   /* read data from flash */
   flash_read(TEST_FLASH_ADDRESS_START, buffer_read, TEST_BUFEER_SIZE);
 
   /* compare the buffer */
-  if(buffer_compare(buffer_write, buffer_read, TEST_BUFEER_SIZE) == SUCCESS)
+  if((buffer_compare(buffer_write, buffer_read, TEST_BUFEER_SIZE) == SUCCESS) && (err_status == SUCCESS))
   {
     at32_led_on(LED2);
     at32_led_on(LED3);

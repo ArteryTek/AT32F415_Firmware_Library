@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_tmr.h
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    at32f415 tmr header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -882,7 +882,7 @@ void tmr_input_channel_filter_set(tmr_type *tmr_x, tmr_channel_select_type tmr_c
                                   uint16_t filter_value);
 void tmr_pwm_input_config(tmr_type *tmr_x, tmr_input_config_type *input_struct, \
                           tmr_channel_input_divider_type divider_factor);
-void tmr_channel1_input_select(tmr_type *tmr_x, tmr_channel1_input_connected_type ti1_connect);
+void tmr_channel1_input_select(tmr_type *tmr_x, tmr_channel1_input_connected_type ch1_connect);
 void tmr_input_channel_divider_set(tmr_type *tmr_x, tmr_channel_select_type tmr_channel, \
                                    tmr_channel_input_divider_type divider_factor);
 void tmr_primary_mode_select(tmr_type *tmr_x, tmr_primary_select_type primary_mode);

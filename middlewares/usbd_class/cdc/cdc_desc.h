@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     cdc_desc.h
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    usb cdc descriptor header file
   **************************************************************************
   *                       Copyright notice & Disclaimer

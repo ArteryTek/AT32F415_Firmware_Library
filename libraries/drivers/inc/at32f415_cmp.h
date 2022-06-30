@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_cmp.h
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    at32f415 cmp header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -52,10 +52,9 @@ extern "C" {
   */
 typedef enum
 {
-  CMP_NON_INVERTING_PA5                  = 0x00, /*!< comparator non-inverting connect to pa5 */
-  CMP_NON_INVERTING_PA1                  = 0x01, /*!< comparator non-inverting connect to pa1 */
-  CMP_NON_INVERTING_PA0                  = 0x02, /*!< comparator non-inverting connect to pa0 */
-  CMP_NON_INVERTING_VSSA                 = 0x03  /*!< comparator non-inverting connect to vssa */
+  CMP_NON_INVERTING_PA5_PA7              = 0x00, /*!< comparator1/2 non-inverting connect to pa5/pa7 */
+  CMP_NON_INVERTING_PA1_PA3              = 0x01, /*!< comparator1/2 non-inverting connect to pa1/pa3 */
+  CMP_NON_INVERTING_PA0_PA2              = 0x02, /*!< comparator1/2 non-inverting connect to pa0/pa2 */
 } cmp_non_inverting_type;
 
 /**
@@ -69,8 +68,7 @@ typedef enum
   CMP_INVERTING_VREFINT                  = 0x03, /*!< comparator inverting connect to vrefint */
   CMP_INVERTING_PA4                      = 0x04, /*!< comparator inverting connect to pa4 */
   CMP_INVERTING_PA5                      = 0x05, /*!< comparator inverting connect to pa5 */
-  CMP_INVERTING_PA0                      = 0x06, /*!< comparator inverting connect to pa0 */
-  CMP_INVERTING_PA2                      = 0x07  /*!< comparator inverting connect to pa2 */
+  CMP_INVERTING_PA0_PA2                  = 0x06, /*!< comparator1/2 inverting connect to pa0/pa2 */
 } cmp_inverting_type;
 
 /**
@@ -79,9 +77,7 @@ typedef enum
 typedef enum
 {
   CMP_SPEED_FAST                         = 0x00, /*!< comparator selected fast speed */
-  CMP_SPEED_MEDIUM                       = 0x01, /*!< comparator selected medium speed */
-  CMP_SPEED_SLOW                         = 0x02, /*!< comparator selected slow speed */
-  CMP_SPEED_ULTRALOW                     = 0x03  /*!< comparator selected ultralow speed */
+  CMP_SPEED_SLOW                         = 0x01, /*!< comparator selected slow speed */
 } cmp_speed_type;
 
 /**
@@ -213,6 +209,7 @@ void cmp_enable(cmp_sel_type cmp_sel, confirm_state new_state);
 void cmp_input_shift_enable(confirm_state new_state);
 uint32_t cmp_output_value_get(cmp_sel_type cmp_sel);
 void cmp_write_protect_enable(cmp_sel_type cmp_sel);
+void cmp_double_mode_enable(confirm_state new_state);
 
 /**
   * @}

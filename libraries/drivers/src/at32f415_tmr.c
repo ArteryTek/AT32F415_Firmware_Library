@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_tmr.c
-  * @version  v2.0.5
-  * @date     2022-05-20
+  * @version  v2.0.6
+  * @date     2022-06-28
   * @brief    contains all the functions for the tmr firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -1046,15 +1046,15 @@ void tmr_pwm_input_config(tmr_type *tmr_x, tmr_input_config_type *input_struct,
   * @param  tmr_x: select the tmr peripheral.
   *         this parameter can be one of the following values:
   *         TMR1, TMR2, TMR3, TMR4, TMR5
-  * @param  ti1_connect
+  * @param  ch1_connect
   *         this parameter can be one of the following values:
   *         - TMR_CHANEL1_CONNECTED_C1IRAW
   *         - TMR_CHANEL1_2_3_CONNECTED_C1IRAW_XOR
   * @retval none
   */
-void tmr_channel1_input_select(tmr_type *tmr_x, tmr_channel1_input_connected_type ti1_connect)
+void tmr_channel1_input_select(tmr_type *tmr_x, tmr_channel1_input_connected_type ch1_connect)
 {
-  tmr_x->ctrl2_bit.c1insel = ti1_connect;
+  tmr_x->ctrl2_bit.c1insel = ch1_connect;
 }
 
 /**
