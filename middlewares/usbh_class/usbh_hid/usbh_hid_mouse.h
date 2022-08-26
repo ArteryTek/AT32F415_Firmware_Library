@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     usbh_hid_mouse.h
-  * @version  v2.0.6
-  * @date     2022-06-28
+  * @version  v2.0.7
+  * @date     2022-08-16
   * @brief    usb host hid mouse header file
   **************************************************************************
   *                       Copyright notice & Disclaimer

@@ -1,8 +1,8 @@
 /**
   **************************************************************************
   * @file     at32f415_spi.c
-  * @version  v2.0.6
-  * @date     2022-06-28
+  * @version  v2.0.7
+  * @date     2022-08-16
   * @brief    contains all the functions for the spi firmware library
   **************************************************************************
   *                       Copyright notice & Disclaimer
