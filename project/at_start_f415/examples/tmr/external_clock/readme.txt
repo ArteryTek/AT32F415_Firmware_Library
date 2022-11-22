@@ -1,8 +1,6 @@
 /**
   **************************************************************************
   * @file     readme.txt
-  * @version  v2.0.7
-  * @date     2022-08-16
   * @brief    readme
   **************************************************************************
   */
@@ -12,4 +10,4 @@
   - pa0    <--->    pa7
   - pb0 output 100 hz pwm waveform   
 
-  for more detailed information. please refer to the application note document AN0085.
+  for more detailed information. please refer to the application note document AN0085.

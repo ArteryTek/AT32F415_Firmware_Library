@@ -1,8 +1,6 @@
 /**
   **************************************************************************
   * @file     at32f415.h
-  * @version  v2.0.7
-  * @date     2022-08-16
   * @brief    at32f415 header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
@@ -70,6 +68,23 @@ extern "C" {
     #define AT32F415xx
 #endif
 
+#if defined (AT32F415RCT7)   || defined (AT32F415RCT7_7) || defined (AT32F415RBT7)   || \
+    defined (AT32F415RBT7_7) || defined (AT32F415R8T7)   || defined (AT32F415R8T7_7)
+
+    #define AT32F415Rx
+#endif
+
+#if defined (AT32F415CCT7)   || defined (AT32F415CCU7)   || defined (AT32F415CBT7)   || \
+    defined (AT32F415CBU7)   || defined (AT32F415C8T7)
+
+    #define AT32F415Cx
+#endif
+
+#if defined (AT32F415KCU7_4) || defined (AT32F415KBU7_4) || defined (AT32F415K8U7_4)
+
+    #define AT32F415Kx
+#endif
+
 #ifndef USE_STDPERIPH_DRIVER
 /**
   * @brief comment the line below if you will not use the peripherals drivers.
@@ -89,7 +104,7 @@ extern "C" {
   */
 #define __AT32F415_LIBRARY_VERSION_MAJOR    (0x02) /*!< [31:24] major version */
 #define __AT32F415_LIBRARY_VERSION_MIDDLE   (0x00) /*!< [23:16] middle version */
-#define __AT32F415_LIBRARY_VERSION_MINOR    (0x07) /*!< [15:8]  minor version */
+#define __AT32F415_LIBRARY_VERSION_MINOR    (0x08) /*!< [15:8]  minor version */
 #define __AT32F415_LIBRARY_VERSION_RC       (0x00) /*!< [7:0]  release candidate */
 #define __AT32F415_LIBRARY_VERSION          ((__AT32F415_LIBRARY_VERSION_MAJOR << 24)  | \
                                              (__AT32F415_LIBRARY_VERSION_MIDDLE << 16) | \

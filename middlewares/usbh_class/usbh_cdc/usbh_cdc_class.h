@@ -1,8 +1,6 @@
 /**
   **************************************************************************
   * @file     usbh_cdc_class.h
-  * @version  v2.0.7
-  * @date     2022-08-16
   * @brief    usb host cdc class header file
   **************************************************************************
   *                       Copyright notice & Disclaimer
