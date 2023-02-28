@@ -45,11 +45,11 @@
   */
 void system_clock_config(void)
 {
-  /* config flash psr register */
-  flash_psr_set(FLASH_WAIT_CYCLE_4);
-
   /* reset crm */
   crm_reset();
+
+  /* config flash psr register */
+  flash_psr_set(FLASH_WAIT_CYCLE_4);
 
   crm_clock_source_enable(CRM_CLOCK_SOURCE_HEXT, TRUE);
 

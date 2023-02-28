@@ -139,7 +139,7 @@ extern "C" {
   *         - FLASH_WAIT_CYCLE_3
   *         - FLASH_WAIT_CYCLE_4
   */
-#define flash_psr_set(wtcyc)     (FLASH->psr = (uint32_t)(0x150 | wtcyc))
+#define flash_psr_set(wtcyc)     (FLASH->psr = (uint32_t)(0x10 | wtcyc))
 
 /** @defgroup FLASH_exported_types
   * @{
