@@ -68,6 +68,9 @@ extern "C" {
     #define AT32F415xx
 #endif
 
+/**
+  * define with package
+  */
 #if defined (AT32F415RCT7)   || defined (AT32F415RCT7_7) || defined (AT32F415RBT7)   || \
     defined (AT32F415RBT7_7) || defined (AT32F415R8T7)   || defined (AT32F415R8T7_7)
 
@@ -83,6 +86,27 @@ extern "C" {
 #if defined (AT32F415KCU7_4) || defined (AT32F415KBU7_4) || defined (AT32F415K8U7_4)
 
     #define AT32F415Kx
+#endif
+
+/**
+  * define with memory density
+  */
+#if defined (AT32F415R8T7)   || defined (AT32F415R8T7_7) || defined (AT32F415C8T7)   || \
+    defined (AT32F415K8U7_4)
+
+    #define AT32F415x8
+#endif
+
+#if defined (AT32F415RBT7)   || defined (AT32F415RBT7_7) || defined (AT32F415CBT7)   || \
+    defined (AT32F415CBU7)   || defined (AT32F415KBU7_4)
+
+    #define AT32F415xB
+#endif
+
+#if defined (AT32F415RCT7)   || defined (AT32F415RCT7_7) || defined (AT32F415CCT7)   || \
+    defined (AT32F415CCU7)   || defined (AT32F415KCU7_4)
+
+    #define AT32F415xC
 #endif
 
 #ifndef USE_STDPERIPH_DRIVER
@@ -103,8 +127,8 @@ extern "C" {
   * @brief at32f415 standard peripheral library version number
   */
 #define __AT32F415_LIBRARY_VERSION_MAJOR    (0x02) /*!< [31:24] major version */
-#define __AT32F415_LIBRARY_VERSION_MIDDLE   (0x00) /*!< [23:16] middle version */
-#define __AT32F415_LIBRARY_VERSION_MINOR    (0x09) /*!< [15:8]  minor version */
+#define __AT32F415_LIBRARY_VERSION_MIDDLE   (0x01) /*!< [23:16] middle version */
+#define __AT32F415_LIBRARY_VERSION_MINOR    (0x00) /*!< [15:8]  minor version */
 #define __AT32F415_LIBRARY_VERSION_RC       (0x00) /*!< [7:0]  release candidate */
 #define __AT32F415_LIBRARY_VERSION          ((__AT32F415_LIBRARY_VERSION_MAJOR << 24)  | \
                                              (__AT32F415_LIBRARY_VERSION_MIDDLE << 16) | \

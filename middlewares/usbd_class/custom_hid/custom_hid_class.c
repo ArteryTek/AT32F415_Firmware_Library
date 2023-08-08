@@ -143,7 +143,7 @@ static usb_sts_type class_setup_handler(void *udev, usb_setup_type *setup)
           pcshid->hid_state = HID_REQ_SET_REPORT;
           usbd_ctrl_recv(pudev, pcshid->hid_set_report, setup->wLength);
           break;
-				case HID_REQ_GET_REPORT:
+        case HID_REQ_GET_REPORT:
           usbd_ctrl_send(pudev, pcshid->hid_get_report, setup->wLength);
           break;
         default:
@@ -174,7 +174,12 @@ static usb_sts_type class_setup_handler(void *udev, usb_setup_type *setup)
         case USB_STD_REQ_SET_INTERFACE:
           pcshid->alt_setting = setup->wValue;
           break;
+        case USB_STD_REQ_CLEAR_FEATURE:
+          break;
+        case USB_STD_REQ_SET_FEATURE:
+          break;
         default:
+          usbd_ctrl_unsupport(pudev);
           break;
       }
       break;

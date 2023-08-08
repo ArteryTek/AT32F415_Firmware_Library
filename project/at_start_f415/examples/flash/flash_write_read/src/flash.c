@@ -33,7 +33,11 @@
   * @{
   */
 
+#if defined (AT32F415xC)
 #define SECTOR_SIZE                      2048   /* this parameter depends on the specific model of the chip */
+#else
+#define SECTOR_SIZE                      1024   /* this parameter depends on the specific model of the chip */
+#endif
 
 uint16_t flash_buf[SECTOR_SIZE / 2];
 

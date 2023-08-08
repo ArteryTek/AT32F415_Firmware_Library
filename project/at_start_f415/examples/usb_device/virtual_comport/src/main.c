@@ -29,6 +29,7 @@
 #include "usbd_int.h"
 #include "cdc_class.h"
 #include "cdc_desc.h"
+#include "string.h"
 
 /** @addtogroup AT32F415_periph_examples
   * @{
@@ -40,7 +41,9 @@
 
 /* usb global struct define */
 otg_core_type otg_core_struct;
-uint8_t usb_buffer[256];
+uint32_t usb_buffer[256];
+uint8_t usart2_tx_counter = 0;
+uint16_t data_len;
 void usb_clock48m_select(usb_clk48_s clk_s);
 void usb_gpio_config(void);
 void usb_low_power_wakeup_config(void);
@@ -51,6 +54,7 @@ void usb_usart_config(linecoding_type linecoding);
 void usart_gpio_config(void);
 #define  usart_buffer_size  2048
 uint8_t usart_rx_buffer[usart_buffer_size];
+uint32_t usb_tx_buffer[512];
 uint16_t hw_usart_rx_index = 0;
 uint16_t hw_usart_read_index = 0;
 uint16_t usart_rx_data_len = 0;
@@ -65,8 +69,6 @@ uint16_t usart_receive_data(void);
   */
 int main(void)
 {
-  uint16_t data_len;
-
   uint32_t timeout;
 
   uint8_t send_zero_packet = 0;
@@ -108,12 +110,12 @@ int main(void)
   while(1)
   {
     /* get usb vcp receive data */
-    data_len = usb_vcp_get_rxdata(&otg_core_struct.dev, usb_buffer);
+    data_len = usb_vcp_get_rxdata(&otg_core_struct.dev, (uint8_t *)usb_buffer);
 
     /* send data to hardware usart */
     if(data_len > 0)
     {
-      usart_send_data(usb_buffer, data_len);
+      usart_send_data((uint8_t *)usb_buffer, data_len);
     }
 
     /* if hardware usart received data,usb send data to host */
@@ -133,7 +135,8 @@ int main(void)
         do
         {
           /* send data to host */
-          if(usb_vcp_send_data(&otg_core_struct.dev, &usart_rx_buffer[hw_usart_read_index], usart_rx_data_len) == SUCCESS)
+          memcpy((uint8_t *)usb_tx_buffer, &usart_rx_buffer[hw_usart_read_index], usart_rx_data_len);
+          if(usb_vcp_send_data(&otg_core_struct.dev, (uint8_t *)usb_tx_buffer, usart_rx_data_len) == SUCCESS)
           {
             hw_usart_read_index = hw_usart_read_index + usart_rx_data_len;
 
@@ -148,7 +151,8 @@ int main(void)
         do
         {
           /* send data to host */
-          if(usb_vcp_send_data(&otg_core_struct.dev, &usart_rx_buffer[hw_usart_read_index], usart_buffer_size - hw_usart_read_index) == SUCCESS)
+          memcpy((uint8_t *)usb_tx_buffer, &usart_rx_buffer[hw_usart_read_index], usart_buffer_size - hw_usart_read_index);
+          if(usb_vcp_send_data(&otg_core_struct.dev, (uint8_t *)usb_tx_buffer, usart_buffer_size - hw_usart_read_index) == SUCCESS)
           {
             /* get fifo overflow data count */
             ov_cnt = usart_rx_data_len - (usart_buffer_size - hw_usart_read_index);
@@ -160,7 +164,8 @@ int main(void)
         do
         {
           /* send data to host */
-          if(usb_vcp_send_data(&otg_core_struct.dev, &usart_rx_buffer[hw_usart_read_index], ov_cnt) == SUCCESS)
+          memcpy((uint8_t *)usb_tx_buffer, &usart_rx_buffer[hw_usart_read_index], ov_cnt);
+          if(usb_vcp_send_data(&otg_core_struct.dev, (uint8_t *)usb_tx_buffer, ov_cnt) == SUCCESS)
           {
             hw_usart_read_index = ov_cnt;
             break;
@@ -201,7 +206,7 @@ uint16_t usart_receive_data(void)
   uint16_t usart_data_len;
   if(hw_usart_read_index == hw_usart_rx_index)
   {
-		usart_data_len = 0;
+    usart_data_len = 0;
   }
   else
   {
@@ -253,7 +258,7 @@ void usb_usart_config( linecoding_type linecoding)
     case 0x0:
       usart_stop_bit = USART_STOP_1_BIT;
       break;
-	/* to be used when transmitting and receiving data in smartcard mode */
+  /* to be used when transmitting and receiving data in smartcard mode */
     case 0x1:
       usart_stop_bit = USART_STOP_1_5_BIT;
       break;
@@ -263,23 +268,7 @@ void usb_usart_config( linecoding_type linecoding)
     default :
       break;
   }
-  /* data bits */
-  switch(linecoding.data)
-  {
-    /* hardware usart not support data bits for 5/6 */
-    case 0x5:
-    case 0x6:
-    case 0x7:
-      break;
-    case 0x8:
-      usart_data_bit = USART_DATA_8BITS;
-      break;
-    /* hardware usart not support data bits for 16 */
-    case 0x10:
-      break;
-    default :
-      break;
-  }
+
   /* parity */
   switch(linecoding.parity)
   {
@@ -298,6 +287,49 @@ void usb_usart_config( linecoding_type linecoding)
       break;
     default :
       break;
+  }
+  
+  if(USART_PARITY_NONE == usart_parity_select)
+  {
+    /* data bits */
+    switch(linecoding.data)
+    {
+      /* hardware usart not support data bits for 5/6 */
+      case 0x5:
+      case 0x6:
+      case 0x7:
+        break;
+      case 0x8:
+        usart_data_bit = USART_DATA_8BITS;
+        break;
+      /* hardware usart not support data bits for 16 */
+      case 0x10:
+        break;
+      default :
+        break;
+    }    
+  }
+  else
+  {
+    /* data bits */
+    switch(linecoding.data)
+    {
+      /* hardware usart not support data bits for 5/6 */
+      case 0x5:
+      case 0x6:
+        break;
+      case 0x7:
+        usart_data_bit = USART_DATA_8BITS;
+        break;
+      case 0x8:
+        usart_data_bit = USART_DATA_9BITS;
+        break;
+      /* hardware usart not support data bits for 16 */
+      case 0x10:
+        break;
+      default :
+        break;
+    }    
   }
 
   nvic_irq_enable(USART2_IRQn, 0, 0);

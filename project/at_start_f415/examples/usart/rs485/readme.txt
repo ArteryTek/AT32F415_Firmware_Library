@@ -11,4 +11,4 @@
   set-up
   - usart tx      --->   pa2
   - usart rx      --->   pa3
-  - usart de      --->   pa1
+  - usart de      --->   pa1

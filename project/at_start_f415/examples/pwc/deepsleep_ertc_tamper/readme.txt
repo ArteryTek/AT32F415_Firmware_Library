@@ -10,4 +10,4 @@
   
   the rising edge on pc13 will wake up deepsleep mode
 
-  for more detailed information. please refer to the application note document AN0100.
+  for more detailed information. please refer to the application note document AN0100.

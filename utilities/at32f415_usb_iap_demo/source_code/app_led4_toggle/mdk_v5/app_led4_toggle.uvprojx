@@ -10,7 +10,7 @@
       <TargetName>app_led4_toggle</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -274,8 +274,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8005000</StartAddress>
-                <Size>0x3b000</Size>
+                <StartAddress>0x8006000</StartAddress>
+                <Size>0x3a000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>

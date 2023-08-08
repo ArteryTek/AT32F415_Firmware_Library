@@ -90,9 +90,9 @@ void clock_failure_detection_handler(void)
 /**
   * @brief  config sclk 144 mhz with hick clock source.
   * @note   the system clock is configured as follow:
-  *         - system clock        = hick / 2 * pll_mult
-  *         - system clock source = pll (hick)
-  *         - hick                = 8000000
+  *         system clock (sclk)   = hick / 2 * pll_mult
+  *         system clock source   = pll (hick)
+  *         - hick                = HICK_VALUE
   *         - sclk                = 144000000
   *         - ahbdiv              = 1
   *         - ahbclk              = 144000000

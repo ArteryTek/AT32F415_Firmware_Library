@@ -36,7 +36,7 @@ extern "C" {
   * @{
   */
 
-/** @addtogroup USB_IAP_bootloader
+/** @addtogroup USB_iap_bootloader
   * @{
   */
 
@@ -44,7 +44,7 @@ extern "C" {
   * @{
   */
 
-#define FLASH_APP_ADDRESS                0x08005000
+#define FLASH_APP_ADDRESS                0x08006000
 
 /**
   * @}

@@ -50,8 +50,8 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* go to infinite loop when hard fault exception occurs */
-//		__nop();
-//	__nop();
+//    __nop();
+//  __nop();
   while(1)
   {
   }
@@ -67,8 +67,8 @@ void MemManage_Handler(void)
   /* go to infinite loop when memory manage exception occurs */
 
   while(1)
-	{	
-	}
+  {  
+  }
  
 }
 
