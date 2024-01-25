@@ -128,7 +128,7 @@ extern "C" {
   */
 #define __AT32F415_LIBRARY_VERSION_MAJOR    (0x02) /*!< [31:24] major version */
 #define __AT32F415_LIBRARY_VERSION_MIDDLE   (0x01) /*!< [23:16] middle version */
-#define __AT32F415_LIBRARY_VERSION_MINOR    (0x01) /*!< [15:8]  minor version */
+#define __AT32F415_LIBRARY_VERSION_MINOR    (0x02) /*!< [15:8]  minor version */
 #define __AT32F415_LIBRARY_VERSION_RC       (0x00) /*!< [7:0]  release candidate */
 #define __AT32F415_LIBRARY_VERSION          ((__AT32F415_LIBRARY_VERSION_MAJOR << 24)  | \
                                              (__AT32F415_LIBRARY_VERSION_MIDDLE << 16) | \
@@ -226,7 +226,7 @@ typedef enum IRQn
     OTGFS1_IRQn                 = 67,     /*!< otgfs1 global interrupt                              */
     CMP1_IRQn                   = 70,     /*!< comparator1 global interrupt                         */
     CMP2_IRQn                   = 71,     /*!< comparator2 global interrupt                         */
-    DMA2_Channel6_7_IRQn        = 75,     /*!< dma2 channel 6 and channel 7 global interrupt        */
+    DMA2_Channel6_7_IRQn        = 75      /*!< dma2 channel 6 and channel 7 global interrupt        */
 
 } IRQn_Type;
 

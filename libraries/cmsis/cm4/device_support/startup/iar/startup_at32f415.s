@@ -44,8 +44,8 @@ __vector_table
         ; External Interrupts
         DCD     WWDT_IRQHandler                     ; Window Watchdog Timer
         DCD     PVM_IRQHandler                      ; PVM through EXINT Line detect
-        DCD     TAMPER_IRQHandler                   ; Tamper
-        DCD     ERTC_IRQHandler                     ; ERTC
+        DCD     TAMP_STAMP_IRQHandler               ; Tamper and TimeStamps through the EXINT line
+        DCD     ERTC_WKUP_IRQHandler                ; ERTC Wakeup through the EXINT line
         DCD     FLASH_IRQHandler                    ; Flash
         DCD     CRM_IRQHandler                      ; CRM
         DCD     EXINT0_IRQHandler                   ; EXINT Line 0
@@ -188,15 +188,15 @@ WWDT_IRQHandler
 PVM_IRQHandler
         B PVM_IRQHandler
 
-        PUBWEAK TAMPER_IRQHandler
+        PUBWEAK TAMP_STAMP_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)
-TAMPER_IRQHandler
-        B TAMPER_IRQHandler
+TAMP_STAMP_IRQHandler
+        B TAMP_STAMP_IRQHandler
 
-        PUBWEAK ERTC_IRQHandler
+        PUBWEAK ERTC_WKUP_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)
-ERTC_IRQHandler
-        B ERTC_IRQHandler
+ERTC_WKUP_IRQHandler
+        B ERTC_WKUP_IRQHandler
 
         PUBWEAK FLASH_IRQHandler
         SECTION .text:CODE:REORDER:NOROOT(1)

@@ -138,7 +138,7 @@ void SysTick_Handler(void)
 
 void CMP1_IRQHandler(void)
 {
-  if(exint_flag_get(EXINT_LINE_19) != RESET)
+  if(exint_interrupt_flag_get(EXINT_LINE_19) != RESET)
   {
     /* clear exint21 flag */
     exint_flag_clear(EXINT_LINE_19);

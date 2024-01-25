@@ -132,8 +132,8 @@ g_pfnVectors:
   /* External Interrupts */
   .word  WWDT_IRQHandler                     /* Window Watchdog Timer                   */
   .word  PVM_IRQHandler                      /* PVM through EXINT Line detect           */
-  .word  TAMPER_IRQHandler                   /* Tamper                                  */
-  .word  ERTC_IRQHandler                     /* ERTC                                    */
+  .word  TAMP_STAMP_IRQHandler               /* Tamper and TimeStamps through the EXINT line */
+  .word  ERTC_WKUP_IRQHandler                /* ERTC Wakeup through the EXINT line      */
   .word  FLASH_IRQHandler                    /* Flash                                   */
   .word  CRM_IRQHandler                      /* CRM                                     */
   .word  EXINT0_IRQHandler                   /* EXINT Line 0                            */
@@ -247,11 +247,11 @@ g_pfnVectors:
    .weak      PVM_IRQHandler
    .thumb_set PVM_IRQHandler,Default_Handler
 
-   .weak      TAMPER_IRQHandler
-   .thumb_set TAMPER_IRQHandler,Default_Handler
+   .weak      TAMP_STAMP_IRQHandler
+   .thumb_set TAMP_STAMP_IRQHandler,Default_Handler
 
-   .weak      ERTC_IRQHandler
-   .thumb_set ERTC_IRQHandler,Default_Handler
+   .weak      ERTC_WKUP_IRQHandler
+   .thumb_set ERTC_WKUP_IRQHandler,Default_Handler
 
    .weak      FLASH_IRQHandler
    .thumb_set FLASH_IRQHandler,Default_Handler
