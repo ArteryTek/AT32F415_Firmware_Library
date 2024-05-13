@@ -9,8 +9,7 @@
   the slib example) describes how to generate an execute-only ip-code (using
   compiler options), place and protect it (protection using slib) in some preferred
   sectors in internal flash memory. the fir filter algorithm from cmsis library
-  is chosen as an example of ip-code to be protected. enabling slib is managed
-  by software in slib_enable() function.
+  is chosen as an example of ip-code to be protected.
   
   the ip-code function fir_lowpass_filter() is called in main.c file. note that
   symbol definition file have to be generated in project configuration described
@@ -22,9 +21,6 @@
   
   @note the ip-code and ip-data are placed in sector 2 to sector 5 which will
         be protected.
-  
-        activating the slib on these sectors is completed by slib_enable() function
-        descripes in main file.
 
   @note the application needs to ensure that the systick time base is always
         set to 1 millisecond to have correct operation.
@@ -76,12 +72,8 @@
      (a) power on the board then load the code, led3 should toggle fast if not
          press reset button.
      (b) press the user button key to execute the ip-code called in main.c file.
-     (c) if macro "use_slib_function" is defined and slib is never enabled, go
-         to step(e). 
-     (d) if the ip-code is successfully executed, the green led4 should toggle 
-         continuously. else the red led2 toggles continuously.  
-     (e) the slib_enable() function will set slib configuration once the ip-code
-         is correctly executed. the green led4 will turn on some time and then
-         a system rest is executed to activate slib. the code will run to step(b).
+
+     (c) if the ip-code is successfully executed, the green led4 should toggle 
+         continuously. else the red led2 toggles continuously.
 
   for details, please refer to the application note document AN0065.
