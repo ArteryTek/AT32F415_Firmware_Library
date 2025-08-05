@@ -131,37 +131,39 @@ void cdc_receive_complete(usbh_core_type *uhost)
   */
 void usb_clock48m_select(usb_clk48_s clk_s)
 {
-    switch(system_core_clock)
-    {
-      /* 48MHz */
-      case 48000000:
-        crm_usb_clock_div_set(CRM_USB_DIV_1);
-        break;
+  crm_clocks_freq_type clocks_struct;
+  
+  crm_clocks_freq_get(&clocks_struct);
+  switch(clocks_struct.sclk_freq)
+  {
+    /* 48MHz */
+    case 48000000:
+      crm_usb_clock_div_set(CRM_USB_DIV_1);
+      break;
 
-      /* 72MHz */
-      case 72000000:
-        crm_usb_clock_div_set(CRM_USB_DIV_1_5);
-        break;
+    /* 72MHz */
+    case 72000000:
+      crm_usb_clock_div_set(CRM_USB_DIV_1_5);
+      break;
 
-      /* 96MHz */
-      case 96000000:
-        crm_usb_clock_div_set(CRM_USB_DIV_2);
-        break;
+    /* 96MHz */
+    case 96000000:
+      crm_usb_clock_div_set(CRM_USB_DIV_2);
+      break;
 
-      /* 120MHz */
-      case 120000000:
-        crm_usb_clock_div_set(CRM_USB_DIV_2_5);
-        break;
+    /* 120MHz */
+    case 120000000:
+      crm_usb_clock_div_set(CRM_USB_DIV_2_5);
+      break;
 
-      /* 144MHz */
-      case 144000000:
-        crm_usb_clock_div_set(CRM_USB_DIV_3);
-        break;
+    /* 144MHz */
+    case 144000000:
+      crm_usb_clock_div_set(CRM_USB_DIV_3);
+      break;
 
-      default:
-        break;
-
-    }
+    default:
+      break;
+  }
 }
 
 /**

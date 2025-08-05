@@ -102,7 +102,10 @@ int main(void)
   */
 void usb_clock48m_select(usb_clk48_s clk_s)
 {
-  switch(system_core_clock)
+  crm_clocks_freq_type clocks_struct;
+  
+  crm_clocks_freq_get(&clocks_struct);
+  switch(clocks_struct.sclk_freq)
   {
     /* 48MHz */
     case 48000000:
@@ -131,7 +134,6 @@ void usb_clock48m_select(usb_clk48_s clk_s)
 
     default:
       break;
-
   }
 }
 

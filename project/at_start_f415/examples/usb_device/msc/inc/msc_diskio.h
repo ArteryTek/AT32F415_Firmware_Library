@@ -44,7 +44,7 @@ extern "C" {
 #define SPI_FLASH_LUN                    1
 #define SD_LUN                           2
 
-#define USB_FLASH_ADDR_OFFSET            0x08005000
+#define USB_FLASH_ADDR_OFFSET            0x08008000
 
 #define SECTOR_SIZE_1K                   1024
 #define SECTOR_SIZE_2K                   2048

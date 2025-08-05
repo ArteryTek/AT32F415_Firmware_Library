@@ -24,8 +24,6 @@
 
 /* includes ------------------------------------------------------------------*/
 #include "at32f415_int.h"
-#include "at32f415_board.h"
-
 
 /** @addtogroup AT32F415_periph_examples
   * @{

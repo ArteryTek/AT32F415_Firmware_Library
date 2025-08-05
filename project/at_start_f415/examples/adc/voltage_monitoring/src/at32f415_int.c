@@ -24,10 +24,6 @@
 
 /* includes ------------------------------------------------------------------*/
 #include "at32f415_int.h"
-#include "at32f415_board.h"
-
-extern __IO uint16_t adc1_ordinary_valuetab[3];
-extern __IO uint16_t vmor_flag_index;
 
 /** @addtogroup AT32F415_periph_examples
   * @{
@@ -133,21 +129,6 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-}
-
-/**
-  * @brief  this function handles adc1_2 handler.
-  * @param  none
-  * @retval none
-  */
-void ADC1_IRQHandler(void)
-{
-  if(adc_interrupt_flag_get(ADC1, ADC_VMOR_FLAG) != RESET)
-  {
-    at32_led_toggle(LED3);
-    adc_flag_clear(ADC1, ADC_VMOR_FLAG);
-    vmor_flag_index = 1;
-  }
 }
 
 /**

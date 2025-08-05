@@ -48,7 +48,7 @@ void systick_handler(void)
   ticks ++;
 
   /* toggle led */
-  if(ticks > DELAY)
+  if(ticks >= DELAY)
   {
     at32_led_toggle(LED2);
     ticks = 0;

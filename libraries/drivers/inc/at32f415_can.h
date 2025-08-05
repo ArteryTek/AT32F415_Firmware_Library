@@ -707,7 +707,7 @@ typedef struct
     __IO uint32_t inten;
     struct
     {
-      __IO uint32_t tcien               : 1; /* [0] */
+      __IO uint32_t tcien                : 1; /* [0] */
       __IO uint32_t rf0mien              : 1; /* [1] */
       __IO uint32_t rf0fien              : 1; /* [2] */
       __IO uint32_t rf0oien              : 1; /* [3] */

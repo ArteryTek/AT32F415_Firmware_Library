@@ -118,21 +118,43 @@ int main(void)
      /* enter deep sleep */
     if(((mouse_type *)(otg_core_struct.dev.class_handler->pdata))->hid_suspend_flag == 1)
     {
-      at32_led_off(LED2);
-      at32_led_off(LED3);
-      at32_led_off(LED4);
-      /* congfig the voltage regulator mode */
-      pwc_voltage_regulate_set(PWC_REGULATOR_LOW_POWER);
-
-      /* enter deep sleep mode */
-      pwc_deep_sleep_mode_enter(PWC_DEEP_SLEEP_ENTER_WFI);
-      /* wait clock stable */
-      for(delay_index = 0; delay_index < 600; delay_index++)
+      __disable_irq();
+      if(OTG_PCGCCTL(otg_core_struct.usb_reg)->pcgcctl_bit.suspendm == 1
+         && usb_suspend_status_get(otg_core_struct.usb_reg) == 1)
       {
-        __NOP();
+        at32_led_off(LED2);
+        at32_led_off(LED3);
+        at32_led_off(LED4);
+        /* congfig the voltage regulator mode */
+        pwc_voltage_regulate_set(PWC_REGULATOR_LOW_POWER);
+
+        /* enter deep sleep mode */
+        pwc_deep_sleep_mode_enter(PWC_DEEP_SLEEP_ENTER_WFI);
+        
+        /* wait 3 LICK(maximum 120us) cycles to ensure clock stable */
+        /* when wakeup from deepsleep,system clock source changes to HICK */
+        if((CRM->misc2_bit.hick_to_sclk == TRUE) && (CRM->misc1_bit.hickdiv == TRUE))
+        {
+          /* HICK is 48MHz */
+          for(delay_index = 0; delay_index < 750; delay_index++)
+          {
+            __NOP();
+          }
+        }
+        else
+        {
+          /* HICK is 8MHz */
+          for(delay_index = 0; delay_index < 125; delay_index++)
+          {
+            __NOP();
+          }
+        }
+        
+        system_clock_recover();
       }
-      system_clock_recover();
       ((mouse_type *)(otg_core_struct.dev.class_handler->pdata))->hid_suspend_flag = 0;
+      __enable_irq();
+      
       at32_led_on(LED2);
       at32_led_on(LED3);
       at32_led_on(LED4);
@@ -148,7 +170,10 @@ int main(void)
   */
 void usb_clock48m_select(usb_clk48_s clk_s)
 {
-  switch(system_core_clock)
+  crm_clocks_freq_type clocks_struct;
+  
+  crm_clocks_freq_get(&clocks_struct);
+  switch(clocks_struct.sclk_freq)
   {
     /* 48MHz */
     case 48000000:
@@ -177,7 +202,6 @@ void usb_clock48m_select(usb_clk48_s clk_s)
 
     default:
       break;
-
   }
 }
 
