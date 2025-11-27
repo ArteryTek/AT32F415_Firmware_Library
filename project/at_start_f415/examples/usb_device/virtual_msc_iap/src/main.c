@@ -3,7 +3,8 @@
   * @file     main.c
   * @brief    main program
   **************************************************************************
-  *                       Copyright notice & Disclaimer
+  *
+  * Copyright (c) 2025, Artery Technology, All rights reserved.
   *
   * The software Board Support Package (BSP) that is made available to
   * download from Artery official website is the copyrighted work of Artery.
@@ -51,6 +52,7 @@ void button_exint_init(button_type button);
 void button_isr(void);
 void jump_to_app(uint32_t address);
 void usb_re_connect(void);
+uint32_t stkptr, jumpaddr;
 
 
 /**
@@ -281,6 +283,18 @@ void flash_fat16_loop_status(void)
 }
 
 
+/* app_load don't optimize */
+#if defined (__ARMCC_VERSION)
+ #if (__ARMCC_VERSION >= 6010050)
+  __attribute__((optnone))
+ #else
+  #pragma O0
+ #endif
+#elif defined (__ICCARM__)
+  #pragma optimize=s none
+#elif defined (__GNUC__)
+  __attribute__((optimize("O0")))
+#endif
 /**
   * @brief  jump to app
   * @param  none
@@ -288,7 +302,6 @@ void flash_fat16_loop_status(void)
   */
 void jump_to_app(uint32_t address)
 {
-  uint32_t stkptr, jumpaddr;
   stkptr = *(uint32_t *)address;
   jumpaddr = *(uint32_t *)(address + sizeof(uint32_t));
 
